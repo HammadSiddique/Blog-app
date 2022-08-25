@@ -1,1 +1,24 @@
-<h1> Here is the details of the selected user.</h1>
+<section>
+	<%= render 'shared/user/user'%>
+
+	<div class='user-bio'>
+		<h3> Bio </h3>
+		<p><%= @user.bio %></p>
+	</div>
+
+<div>
+		<% @user.recent_posts.each do |post| %>
+		<div class='post-card'>
+			<h3><%= post.title %></h3>
+			<p><%= post.text %></p>
+			<div class='likes-comments'>
+				<p>Comments: <%= post.comments_counter%> </p>
+				<p>Likes: <%= post.likes_counter%> </p>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	<% unless @user.recent_posts.empty? %>
+    <button><%=link_to 'See all posts', user_posts_path(@user), :class => 'see-all-btn'%></button>
+  <% end %>
+</section>
