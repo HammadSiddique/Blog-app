@@ -1,4 +1,4 @@
-<section>
+<section class= 'user-details'>
 	<%= render 'shared/user/user'%>
 
 	<div class='user-bio'>
@@ -6,7 +6,7 @@
 		<p><%= @user.bio %></p>
 	</div>
 
-<div>
+<div class='all-posts'>
 		<% @user.recent_posts.each do |post| %>
 		<div class='post-card'>
 			<h3><%= post.title %></h3>
@@ -19,6 +19,6 @@
 		<% end %>
 	</div>
 	<% unless @user.recent_posts.empty? %>
-    <button class='see-all-btn'><%=link_to 'See all posts', user_posts_path(@user)%></button>
+    <button class='see-all-button'><%=link_to 'See all posts', user_posts_path(@user)%></button>
   <% end %>
 </section>
