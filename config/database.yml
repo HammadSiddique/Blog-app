@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: blog_app_development
+  database: blog_app_test
   port: 5433
   username: postgres
   password: 123456

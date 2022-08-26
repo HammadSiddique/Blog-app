@@ -1,1 +1,17 @@
-<h1> Here is the list of all the posts by the selected user.</h1>
+<section class='single-post-of-user'>
+<div class='post-card'>
+  <div class='post-header'>
+    <h3 class='post-title'>"<%= @post.title%>" by:  <%= User.find(@post.user_id).name %></h3>
+  <div class='likes-comments'>
+    <p>Comments: <%= @post.comments_counter%> </p>
+	<p>Likes: <%= @post.likes_counter%> </p>
+  </div>
+  </div>
+  <p class='post-description'><%= @post.text %></p>
+</div>
+  <div class='all-comments-container'>
+    <% @post.comments.each do |comment| %>
+      <p> <%= User.find(comment.user_id).name %>: <%= comment.text %></p>
+    <% end %>
+  </div>
+</section>
