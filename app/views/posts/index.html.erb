@@ -1,6 +1,9 @@
 <section class='all-posts-of-user'>
     <%= render 'shared/user/user' %>
 
+    <div>
+      <%= link_to 'Create a new post', new_user_post_path %>
+    </div>
     <% @posts.each do |post| %>
     <div class='post-card'>
       <div class='post-info'>
