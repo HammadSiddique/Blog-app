@@ -1,0 +1,8 @@
+<section class='comments-form-container'>
+  <h3> Add a comment </h3>
+  <%= form_with model: Comment, url: user_post_comments_url, method: :post do |form| %>
+  <%= form.label :text, 'Comment'%>
+  <%= form.text_area :text %>
+  <%= form.submit 'Add comment' %>
+  <% end %>
+</section>

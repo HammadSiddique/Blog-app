@@ -20,10 +20,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html do
         if @post.save
-          flash[:success] = 'Post saved successfully!'
+          flash[:success] = 'Post created successfully!'
           redirect_to user_posts_path(current_user, @post)
         else
-          flash.now[:error] = 'Something unexpected happened, post could not be saved.'
+          flash.now[:error] = 'Something unexpected happened, post could not be created.'
           render :new
         end
       end
