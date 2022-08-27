@@ -1,7 +1,7 @@
 <section class='all-posts-of-user'>
     <%= render 'shared/user/user' %>
 
-    <div>
+    <div class='post-redirection'>
       <%= link_to 'Create a new post', new_user_post_path %>
     </div>
     <% @posts.each do |post| %>
