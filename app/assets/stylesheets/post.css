@@ -7,8 +7,42 @@
   row-gap: 1rem;
 }
 
+.post-redirection {
+  background-color: #20a7db;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.post-redirection a {
+  text-decoration: none;
+  color: white;
+}
+
+.post-redirection:hover {
+  background-color: #1c96c5;
+}
+
 .comments-container {
   padding: 0.5rem;
+}
+
+.button-interact {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment,
+.like {
+  background-color: #20a7db;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
 .single-post-of-user {
