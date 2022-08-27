@@ -15,13 +15,18 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    author = current_user
-    @post.user = author
-
-    if @post.save
-      redirect_to user_post_path(author, @post)
-    else
-      render :new
+    @post.user = current_user
+    # @post.user = author
+    respond_to do |format|
+      format.html do
+        if @post.save
+          flash[:success] = 'Post saved successfully!'
+          redirect_to user_posts_path(current_user, @post)
+        else
+          flash.now[:error] = 'Something unexpected happened, post could not be saved.'
+          render :new
+        end
+      end
     end
   end
 
