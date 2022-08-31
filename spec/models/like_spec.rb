@@ -4,8 +4,8 @@ RSpec.describe Like, type: :model do
   user = User.create(name: 'Bill', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Chef from Ireland.',
                      posts_counter: 0)
   post = Post.create(title: 'Pizza Recipe', text: 'Recipe for a tasty pepporoni pizza', comments_counter: 0,
-                     likes_counter: 0, author_id: user.id)
-  like = Like.create(post_id: post.id, author_id: user.id)
+                     likes_counter: 0, user_id: user.id)
+  like = Like.create(post_id: post.id, user_id: user.id)
 
   describe 'Tests for like model validation' do
     it 'like should be valid' do

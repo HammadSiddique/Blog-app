@@ -18,8 +18,8 @@ RSpec.describe 'user_index', type: :feature do
     end
 
     it 'redirects the to user show page when user when a name is clicked' do
-        visit users_path
-        page.first("Bill").click
-        expect(current_path).to eq(user_path(User.first))
+        user = User.first
+        click_on user.name, match: :first
+        expect(page.current_path).to eql(user_path(id: user.id))
     end
 end

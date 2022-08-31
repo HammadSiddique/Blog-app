@@ -15,13 +15,14 @@ RSpec.describe UsersController, type: :request do
     end
 
     it 'response body includes correct placeholder text' do
-      expect(response.body).to include('Here is the list of all the users in the app.')
+      expect(response.body).to include('Bill')
     end
   end
 
   describe 'GET show' do
     before :each do
-      get '/users/index'
+      @user = User.first
+      get user_path(@user)
     end
 
     it 'the response status is correct, that is it should return code 200' do
@@ -29,11 +30,11 @@ RSpec.describe UsersController, type: :request do
     end
 
     it 'renders the correct template' do
-      expect(response).to render_template('users/show')
+      expect(response).to render_template(:show)
     end
 
     it 'response body includes correct placeholder text' do
-      expect(response.body).to include('Here is the details of the selected user.')
+      expect(response.body).to include('Bio')
     end
   end
 end
