@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :request do
   describe 'GET index' do
     before :each do
-      get '/users/index/posts'
+      @user = User.first
+      get user_posts_path(@user)
     end
 
     it 'the response status is correct, that is it should return code 200' do
@@ -11,17 +12,19 @@ RSpec.describe PostsController, type: :request do
     end
 
     it 'renders the correct template' do
-      expect(response).to render_template('posts/index')
+      expect(response).to render_template(:index)
     end
 
     it 'response body includes correct placeholder text' do
-      expect(response.body).to include('Here is the list of all the posts in the app.')
+      expect(response.body).to include('Number of posts: 1')
     end
   end
 
   describe 'GET show' do
     before :each do
-      get '/users/index/posts/index'
+      @user = User.first
+      @post = Post.first
+      get user_post_path(@user, @post)
     end
 
     it 'the response status is correct, that is it should return code 200' do
@@ -29,11 +32,11 @@ RSpec.describe PostsController, type: :request do
     end
 
     it 'renders the correct template' do
-      expect(response).to render_template('posts/show')
+      expect(response).to render_template(:show)
     end
 
     it 'response body includes correct placeholder text' do
-      expect(response.body).to include('Here is the list of all the posts by the selected user.')
+      expect(response.body).to include('Pizza Recipe')
     end
   end
 end
