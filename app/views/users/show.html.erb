@@ -9,7 +9,7 @@
 <div class='all-posts'>
 		<% @user.recent_posts.each do |post| %>
 		<div class='post-card'>
-			<h3><%= post.title %></h3>
+			<h3 class='post-title'><%= link_to post.title, user_post_path(@user.id, post) %></h3>
 			<p><%= post.text %></p>
 			<div class='likes-comments'>
 				<p>Comments: <%= post.comments_counter%> </p>
