@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'user_index', type: :feature do
-  user = User.first
-  post = user.posts.first
+  user = User.create(name: 'Bill', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Chef from Ireland.',
+                     posts_counter: 0)
+  post = Post.create(title: 'Pizza Recipe', text: 'Recipe for a tasty pepporoni pizza', comments_counter: 0,
+                     likes_counter: 0, user_id: user.id)
+  comment = Comment.create(user:, post:, text: 'Testing comment')
   before(:each) do
     visit(user_post_path(user.id, post.id))
   end
@@ -28,9 +31,8 @@ RSpec.describe 'user_index', type: :feature do
   end
 
   it 'shows the name of the commentor' do
-    commentor_id = post.comments.first.user_id
-    commentor = User.find(commentor_id).name
-    expect(page).to have_content(commentor)
+    visit user_post_path(user, post)
+    expect(page).to have_content(comment.user.name)
   end
 
   it 'shows the text of the comment' do

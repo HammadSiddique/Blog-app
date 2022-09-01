@@ -1,21 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe 'user_index', type: :feature do
-  user = User.first
+  user = User.create(name: 'Bill', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Chef from Ireland.',
+                     posts_counter: 0)
+  post = Post.create(title: 'Pizza Recipe', text: 'Recipe for a tasty pepporoni pizza', comments_counter: 0,
+                     likes_counter: 0, user_id: user.id)
   before(:each) do
-    visit(user_path(User.first.id))
+    visit(user_path(user.id))
   end
 
   it 'shows the username of the the users' do
-    expect(page).to have_content('Bill')
+    expect(page).to have_content(user.name)
   end
 
   it 'shows the profile photo of users' do
-    expect(page).to have_selector("img[src='#{User.first.photo}']")
+    expect(page).to have_selector("img[src='#{user.photo}']")
   end
 
   it 'shows the number of post of each user' do
-    expect(page).to have_content("Number of posts: #{User.first.posts_counter}")
+    expect(page).to have_content('Number of posts: 1')
   end
 
   it 'shows the bio of user' do
