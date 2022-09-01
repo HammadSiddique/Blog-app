@@ -5,6 +5,7 @@ RSpec.describe 'post_index', type: :feature do
                      posts_counter: 0)
   post = Post.create(title: 'Pizza Recipe', text: 'Recipe for a tasty pepporoni pizza', comments_counter: 0,
                      likes_counter: 0, user_id: user.id)
+  comment = Comment.create(user:, post:, text: 'Testing comment')
 
   before(:each) do
     visit user_posts_path(user.id)
@@ -31,11 +32,11 @@ RSpec.describe 'post_index', type: :feature do
   end
 
   it 'shows the post\'s comments' do
-    expect(page).to have_content('Testing comment')
+    expect(page).to have_content(comment.text)
   end
 
   it 'shows the number of comments of each post' do
-    expect(page).to have_content("Comments: #{post.comments_counter}")
+    expect(page).to have_content("Comments: #{post.reload.comments_counter}")
   end
 
   it 'shows the number of likes of each post' do
