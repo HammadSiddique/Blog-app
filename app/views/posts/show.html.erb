@@ -10,12 +10,19 @@
   <p class='post-description'><%= @post.text %></p>
 </div>
   <div class='button-interact'>
+    <% if can? :destroy, @post %>
+      <%= button_to 'Delete post', user_post_path(@post.user, @post), method: :delete, class: 'delete-post' %>
+    <% end %>
     <%= link_to 'Add a new comment', new_user_post_comment_path(@user, @post), class: 'comment' %>
     <%= button_to 'Like', user_post_likes_path(@user, @post), class: 'like', method: :post%>
   </div>
   <div class='all-comments-container'>
     <% @post.comments.each do |comment| %>
       <p> <%= User.find(comment.user_id).name %>: <%= comment.text %></p>
+      <% if can? :destroy, comment %>
+        <%= button_to 'Delete', user_post_comment_path(comment.user, @post, comment), 
+        method: :delete, class: 'delete-comment' %>
+        <% end %>
     <% end %>
   </div>
 </section>
