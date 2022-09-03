@@ -45,6 +45,17 @@
   cursor: pointer;
 }
 
+.delete-comment,
+.delete-post {
+  background-color: #d41a42;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
 .single-post-of-user {
   margin: 7.5%;
   display: flex;
