@@ -23,7 +23,6 @@ class CommentsController < ApplicationController
     @comment.destroy!
     flash[:success] = 'Comment deleted successfully!'
     redirect_to user_posts_path(current_user, params[:post_id])
-
   end
 
   private
