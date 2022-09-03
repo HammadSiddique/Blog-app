@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -12,7 +10,7 @@ class Ability
       can :create, Comment, :all
       can :create, Like, :all
       can :destroy, Comment, user_id: user.id
-      can [:create, :destroy], Post, user_id: user.id
+      can %i[create destroy], Post, user_id: user.id
       can :read, :all
     end
   end

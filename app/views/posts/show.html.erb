@@ -10,6 +10,9 @@
   <p class='post-description'><%= @post.text %></p>
 </div>
   <div class='button-interact'>
+    <% if can? :destroy, @post %>
+      <%= button_to 'Delete post', user_post_path(@post.user, @post), method: :delete, class: 'delete-post' %>
+    <% end %>
     <%= link_to 'Add a new comment', new_user_post_comment_path(@user, @post), class: 'comment' %>
     <%= button_to 'Like', user_post_likes_path(@user, @post), class: 'like', method: :post%>
   </div>
