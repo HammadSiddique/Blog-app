@@ -20,8 +20,8 @@ gem 'devise'
 
 # Use three following gems for creating API data in JSON format
 gem 'devise-jwt'
-gem 'rack-cors'
 gem 'jwt'
+gem 'rack-cors'
 
 # Use the cancancan gem for the authorization rules of the application
 gem 'cancancan'
