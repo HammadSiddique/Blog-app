@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # , controllers: {
-  #   sessions: 'users/sessions'
-  #   registrations: 'users/registrations'
-  # }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   root 'users#index'
 
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index] do
         resources :posts, only: [:index, :show] do
-          resources :comments, only: [:new, :create] do
+          resources :comments, only: [:index, :create] do
           end
         end
       end
